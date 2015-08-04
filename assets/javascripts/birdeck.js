@@ -17,9 +17,10 @@ $(document).ready(function(){
         )
       })
     }
-  })
+  });
   
   $('#create-post').on('click', function(){
-    console.log('Hello')
+    var postParams = $('post-description').val();
+    console.log(postParams);
   })
 });
