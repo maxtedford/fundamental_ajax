@@ -1,3 +1,6 @@
 $(document).ready(function (){
-  $.ajax()
+  $.ajax({
+    type: 'GET',
+    url:  'http://turing-birdie.herokuapp.com/api/v1/posts.json'
+  })
 });
