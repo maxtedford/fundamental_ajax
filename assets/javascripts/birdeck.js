@@ -5,7 +5,15 @@ $(document).ready(function(){
     success: function(posts){
       $.each(posts, function(index, post){
         $('#latest-posts').append(
-          '<p>Hello</p>'
+          "<div class='post' data-id='"
+          + post.id
+          + "'><h6>Published on"
+          + post.created_at
+          + "<h6>"
+          + "<p>"
+          + post.description
+          + "</p>"
+          + "</div>"
         )
       })
     }
