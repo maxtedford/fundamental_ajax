@@ -20,7 +20,7 @@ $(document).ready(function(){
   });
   
   $('#create-post').on('click', function(){
-    var postParams = $('post-description').val();
+    var postParams = { post: { description: $('post-description').val() } };
     console.log(postParams);
   })
 });
