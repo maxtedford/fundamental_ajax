@@ -18,4 +18,8 @@ $(document).ready(function(){
       })
     }
   })
+  
+  $('#create-post').on('click', function(){
+    console.log('Hello')
+  })
 });
