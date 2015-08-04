@@ -13,6 +13,7 @@ $(document).ready(function(){
           + "<p>"
           + post.description
           + "</p>"
+          + "<button id='delete-post' name='delete-button' class='btn btn-default btn-xs'>Delete</button>"
           + "</div>"
         )
       })
@@ -34,6 +35,7 @@ $(document).ready(function(){
             + "<p>"
             + post.description
             + "</p>"
+            + "<button id='delete-post' name='delete-button' class='btn btn-default btn-xs'>Delete</button>"
             + "</div>"
           )
         })
@@ -59,9 +61,25 @@ $(document).ready(function(){
           + "<p>"
           + newPost.description
           + "</p>"
+          + "<button id='delete-post' name='delete-button' class='btn btn-default btn-xs'>Delete</button>"
           + "</div>"
         )
       }
     })
+  });
+  
+  $('#latest-posts').delegate('#delete-post', 'click', function(){
+    var $post = $(this).closest('.post');
+    
+    $.ajax({
+      type:    'DELETE',
+      url:     'http://turing-birdie.herokuapp.com/api/v1/posts/' + $post.attr('data-id') + '.json',
+      success: function(){
+        $post.remove()
+      },
+      error: function(){
+        $post.remove()
+      }
+    });
   });
 });
