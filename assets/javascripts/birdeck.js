@@ -9,7 +9,7 @@ $(document).ready(function(){
           + post.id
           + "'><h6>Published on"
           + post.created_at
-          + "<h6>"
+          + "</h6>"
           + "<p>"
           + post.description
           + "</p>"
@@ -20,7 +20,26 @@ $(document).ready(function(){
   });
   
   $('#create-post').on('click', function(){
-    var postParams = { post: { description: $('post-description').val() } };
+    var postParams = { post: { description: $('#post-description').val() } };
     console.log(postParams);
-  })
+
+    $.ajax({
+      type:    'POST',
+      url:     'http://turing-birdie.herokuapp.com/api/v1/posts.json',
+      data:    postParams,
+      success: function(newPost){
+        $('#latest-posts').append(
+          "<div class='post' data-id='"
+          + newPost.id
+          + "'><h6>Published on"
+          + newPost.created_at
+          + "</h6>"
+          + "<p>"
+          + newPost.description
+          + "</p>"
+          + "</div>"
+        )
+      }
+    })
+  });
 });
